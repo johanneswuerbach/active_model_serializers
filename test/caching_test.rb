@@ -2,7 +2,7 @@ require "test_helper"
 
 class CachingTest < ActiveModel::TestCase
   class NullStore
-    def fetch(key)
+    def fetch(key, options = {})
       return store[key] if store[key]
 
       store[key] = yield
