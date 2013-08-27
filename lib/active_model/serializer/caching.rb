@@ -13,14 +13,7 @@ module ActiveModel
       end
 
       def serialize(*args)
-        if caching_enabled?
-          key = expand_cache_key([self.class.to_s.underscore, cache_key, 'serialize'])
-          cache.fetch key, :expires_in => self.try(:expires_in) do
-            serialize_object
-          end
-        else
-          serialize_object
-        end
+        serialize_object
       end
 
       private
